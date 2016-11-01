@@ -1,1 +1,1 @@
-*PREVISION*==say "je regarde..." && say "$(curl "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:CH/q/Suisse/Yverdon-les-Bains.json" > ernst.json && cat ernst.json | jq '.forecast')"
+*PREVISION*==say "je regarde..." && say "$(curl "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:CH/q/Suisse/Yverdon-les-Bains.json" > ernst.json && cat ernst.json | jq '.forecast.txt_forecast')"
