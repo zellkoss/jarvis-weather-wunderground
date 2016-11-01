@@ -1,1 +1,1 @@
-*PREVISION*==say "je regarde..." && say "$(curl -s "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:$weather_wunderground_language/q/$weather_wunderground_city.json"| jq '.termsofService' | sed -s)"
+*PREVISION*==say "je regarde..." && say "$(curl -s "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:$weather_wunderground_language/q/$weather_wunderground_city.json"| jq -r '.termsofService' | sed -s)"
