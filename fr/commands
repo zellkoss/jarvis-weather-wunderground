@@ -1,1 +1,6 @@
-*PREVISION*==say "je regarde..." && say "$(curl "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:CH/q/Suisse/Yverdon-les-Bains.json" > ernst.json && cat ernst.json | jq '.forecast.txt_forecast.forecastday[0].fcttext_metric')"
+*METEO*DEMAIN*==say "je regarde..." && say "$(curl -s "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:$weather_wunderground_language/q/$weather_wunderground_city.json" | jq -r '.forecast.txt_forecast.forecastday[2].fcttext_metric' | sed "s/ºC/degrés/g")"
+*METEO*==say "je regarde..." && say "$(curl -s "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:$weather_wunderground_language/q/$weather_wunderground_city.json" | jq -r '.forecast.txt_forecast.forecastday[0].fcttext_metric' | sed "s/ºC/degrés/g")"
+*METEO*JOUR*==say "je regarde..." && say "$(curl -s "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:$weather_wunderground_language/q/$weather_wunderground_city.json" | jq -r '.title' | sed "s/ºC/degrés/g")" && say "$(curl -s "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:$weather_wunderground_language/q/$weather_wunderground_city.json" | jq -r '.forecast.txt_forecast.forecastday[0].fcttext_metric' | sed "s/ºC/degrés/g")"
+
+
+*TEST*METEO*==say "je regarde..." && say "$(curl "http://api.wunderground.com/api/$weather_wunderground_key/forecast/lang:CH/q/Suisse/Yverdon-les-Bains.json" > ernst.json && cat ernst.json | jq '.forecast.txt_forecast.forecastday[0].fcttext_metric')"
